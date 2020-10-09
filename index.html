@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/money.png" type="image/icon type">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strabag payment</title>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="hourly-wage">Órabér(br)</label>
+            <input type="number" class="form-control" id="hourly-wage">
+        </div>
+        <div class="form-group">
+            <label for="days">Ledolgozott napok + Szabadnapok</label>
+            <input type="number" class="form-control" id="days">
+        </div>
+        <div class="form-group">
+            <label for="afternoon-days">Délutános napok</label>
+            <input type="number" class="form-control" id="afternoon-days">
+        </div>
+        <div class="form-group">
+            <label for="night-days">Éjszakás napok</label>
+            <input type="number" class="form-control" id="night-days">
+        </div>
+        <div class="form-group">
+            <label for="overtime">Túlóra</label>
+            <input type="number" class="form-control" id="overtime">
+        </div>
+        <div class="form-group">
+            <label for="sick-pay">Táppénz(nap)</label>
+            <input type="number" class="form-control" id="sick-pay">
+        </div>
+        <div class="form-group">
+            <button type="button" class="form-control btn-success" id="btn-result">Számítás</button>
+        </div>
+    </form>
+    <form id="my-form"></form>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
