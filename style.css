@@ -15,7 +15,7 @@ body{
 @media(max-width: 380px) {
     body {
       flex-direction: row;
-      background-color: black;
+      background-image: url(images/image-1.jpg);
     }
   }
 
