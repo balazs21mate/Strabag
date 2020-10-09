@@ -1,7 +1,7 @@
 *{box-sizing: border-box; margin: 0}
 
 body{
-    background-image: url(images/image-2.jpg);
+    background-image: url(images/image-1.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,7 +15,6 @@ body{
 @media(max-width: 380px) {
     body {
       flex-direction: row;
-      background-image: url(images/image-1.jpg);
     }
   }
 
