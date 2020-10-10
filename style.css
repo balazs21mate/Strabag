@@ -9,7 +9,7 @@ body{
     height: 100vh;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 @media(max-width: 380px) {
@@ -43,4 +43,9 @@ form > div:first-child{
 
 #my-form{
     display: none;
+}
+
+#sick-15{
+    margin-left: 5px;
+    width: 50px;
 }

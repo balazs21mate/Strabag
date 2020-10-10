@@ -15,7 +15,11 @@ function calculate(){
     var nightDays = ((payment.hourlyWage+(payment.hourlyWage*0.5))*payment.nightDays)*8;
     var afternoonDays = ((payment.hourlyWage+(payment.hourlyWage*0.3))*payment.afternoonDays)*8;
     var overtime = (payment.hourlyWage*2)*payment.overtime;
-    var sickPay = ((payment.hourlyWage*0.6)*payment.sickPay)*8;
+    if(document.getElementById('sick').checked === true){
+        var sickPay = ((payment.hourlyWage*0.7)*payment.sickPay)*8;
+    }else{
+        var sickPay = ((payment.hourlyWage*0.6)*payment.sickPay)*8;
+    }
     var brutto = nightDays+afternoonDays+days+overtime+sickPay;
     var deduction = brutto *0.335;
     var netto = brutto-deduction;
@@ -23,7 +27,18 @@ function calculate(){
 }
 
 function update(){
-    if(isNaN(payment.hourlyWage = parseInt(document.getElementById("hourly-wage").value))){
+    const idArray = ["hourly-wage", "days", "afternoon-days", "night-days", "overtime", "sick-pay"]
+    let counter = 0;
+
+    for(const [key, value] of Object.entries(payment)){
+        if(isNaN(payment[`${key}`] = parseInt(document.getElementById(`${idArray[counter]}`).value))){
+            payment[`${key}`] = 0;
+        }else{
+            payment[`${key}`] = parseInt(document.getElementById(`${idArray[counter]}`).value);
+        }
+        counter++;
+    }
+    /*if(isNaN(payment.hourlyWage = parseInt(document.getElementById("hourly-wage").value))){
         payment.hourlyWage = 0;
     }else{
         payment.hourlyWage = parseInt(document.getElementById("hourly-wage").value);
@@ -52,7 +67,7 @@ function update(){
         payment.sickPay = 0;
     }else{
         payment.sickPay = parseInt(document.getElementById("sick-pay").value);
-    }
+    }*/
 }
 
 function log(brutto){
