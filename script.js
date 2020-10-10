@@ -15,8 +15,10 @@ function calculate(){
     var nightDays = ((payment.hourlyWage+(payment.hourlyWage*0.5))*payment.nightDays)*8;
     var afternoonDays = ((payment.hourlyWage+(payment.hourlyWage*0.3))*payment.afternoonDays)*8;
     var overtime = (payment.hourlyWage*2)*payment.overtime;
-    if(document.getElementById('sick').checked === true){
+    if(document.getElementById('sick').checked === true && payment.sickPay <=15){
         var sickPay = ((payment.hourlyWage*0.7)*payment.sickPay)*8;
+    }else if(document.getElementById('sick').checked === true && payment.sickPay > 15){
+        var sickPay = (((payment.hourlyWage*0.6)*(payment.sickPay-15))*8) + (payment.hourlyWage*84);
     }else{
         var sickPay = ((payment.hourlyWage*0.6)*payment.sickPay)*8;
     }
@@ -38,6 +40,9 @@ function update(){
         }
         counter++;
     }
+
+    //Hosszabb változat :)
+
     /*if(isNaN(payment.hourlyWage = parseInt(document.getElementById("hourly-wage").value))){
         payment.hourlyWage = 0;
     }else{
@@ -74,16 +79,16 @@ function log(brutto){
     document.getElementById("my-form").style.display = "block";
     document.getElementById("my-form").innerHTML = `
     <div class="form-group">
-        <label for="result">Fizetés(br)</label>
-        <input type="text" class="form-control input-sm" id="result" placeholder="${brutto[0]}Ft", disabled>
+        <label for="result">Fizetés(brutto)</label>
+        <input type="text" class="form-control input-sm" id="result" placeholder="${parseInt(brutto[0])}Ft", disabled>
     </div>
     <div class="form-group">
         <label for="result">Levonások</label>
-        <input type="text" class="form-control input-sm" id="result" placeholder="${brutto[1]}Ft", disabled>
+        <input type="text" class="form-control input-sm" id="result" placeholder="${parseInt(brutto[1])}Ft", disabled>
     </div>
     <div class="form-group">
         <label for="result">Fizetés(netto)</label>
-        <input type="text" class="form-control input-sm" id="result" placeholder="${brutto[2]}Ft", disabled>
+        <input type="text" class="form-control input-sm" id="result" placeholder="${parseInt(brutto[2])}Ft", disabled>
     </div>`;
     
 }
