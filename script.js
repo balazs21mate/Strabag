@@ -60,15 +60,15 @@ function log(brutto){
     document.getElementById("my-form").innerHTML = `
     <div class="form-group">
         <label for="result">Fizetés(br)</label>
-        <input type="text" class="form-control" id="result" placeholder="${brutto[0]}Ft(br)", disabled>
+        <input type="text" class="form-control input-sm" id="result" placeholder="${brutto[0]}Ft", disabled>
     </div>
     <div class="form-group">
         <label for="result">Levonások</label>
-        <input type="text" class="form-control" id="result" placeholder="${brutto[1]}Ft", disabled>
+        <input type="text" class="form-control input-sm" id="result" placeholder="${brutto[1]}Ft", disabled>
     </div>
     <div class="form-group">
         <label for="result">Fizetés(netto)</label>
-        <input type="text" class="form-control" id="result" placeholder="${brutto[2]}Ft", disabled>
+        <input type="text" class="form-control input-sm" id="result" placeholder="${brutto[2]}Ft", disabled>
     </div>`;
     
 }
