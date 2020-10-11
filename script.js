@@ -22,9 +22,15 @@ function calculate(){
     }else{
         var sickPay = ((payment.hourlyWage*0.6)*payment.sickPay)*8;
     }
+    if(document.getElementById('travel-expenses').checked === true){
+        var travelExpenses = payment.days*420;
+    }else{
+        var travelExpenses = 0;
+    }
+    console.log(travelExpenses);
     var brutto = nightDays+afternoonDays+days+overtime+sickPay;
     var deduction = brutto *0.335;
-    var netto = brutto-deduction;
+    var netto = (brutto-deduction)+travelExpenses;
     return [brutto,deduction,netto];
 }
 
@@ -94,6 +100,7 @@ function log(brutto){
 }
 
 document.getElementById('btn-result').addEventListener("click", function(){
+    document.getElementById('form').style.marginRight = '1rem';
     update();
     let brutto = calculate()
     log(brutto);

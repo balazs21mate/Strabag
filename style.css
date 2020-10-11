@@ -9,21 +9,16 @@ body{
     height: 100vh;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-@media(max-width: 380px) {
-    body {
-      flex-direction: row;
-    }
-  }
-
-@media(max-height: 380px) {
-    body {
-        height: 100%;
-        flex-direction: row;
-    }
-  }
+#form-div{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 
 form{
     background-color: rgba(255, 255, 255, 0.5);
@@ -45,7 +40,56 @@ form > div:first-child{
     display: none;
 }
 
-#sick-15{
-    margin-left: 5px;
-    width: 50px;
+.div-label{
+    width: 60%;
+}
+
+#sick, #travel-expenses{
+    width: 40%;
+    float: right;
+}
+
+header{
+    width: 60%;
+    margin: auto;
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+header > h1{
+    width: 150px;
+    margin: auto;
+    border-bottom: 1px solid black;
+    color: red;
+}
+
+@media(max-height: 380px) {
+    body {
+        height: 100%;
+    }
+    header{
+        padding: 3rem 0 3rem 0;
+    }
+  }
+
+@media(max-width: 380px){
+    header{
+        padding: 0px;
+    }
+    #form-div{
+        height: 90%;
+    }
+}
+
+@media(min-width: 700px){
+    body {
+        height: 100%;
+    }
+}
+
+@media(max-width: 285px){
+    #sick, #travel-expenses{
+        width: 40%;
+        float: none;
+    }
 }
