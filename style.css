@@ -44,7 +44,7 @@ form > div:first-child{
     width: 60%;
 }
 
-#sick, #travel-expenses{
+#sick{
     width: 40%;
     float: right;
 }
@@ -61,6 +61,26 @@ header > h1{
     margin: auto;
     border-bottom: 1px solid black;
     color: red;
+}
+
+.btn{
+    width: 95%;
+}
+
+.form-btn{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 70%;
+    height: 40px;
+}
+
+#btn-result{
+    background-color: green;
+}
+
+#btn-delete{
+    background-color: red;
 }
 
 @media(max-height: 380px) {
@@ -87,9 +107,28 @@ header > h1{
     }
 }
 
+@media(min-width: 1000px){
+    .btn{
+        width: 47%;
+    }
+    #btn-danger{
+        float: right;
+    }
+}
+
 @media(max-width: 285px){
-    #sick, #travel-expenses{
+    #sick{
         width: 40%;
         float: none;
+    }
+    .form-btn{
+        width: 100%;
+    }
+}
+
+@media(min-height: 1000px){
+    #form-div{
+        flex-direction: column;
+        font-size: 2rem;
     }
 }

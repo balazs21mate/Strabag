@@ -4,7 +4,8 @@ let payment = {
     afternoonDays : 0,
     nightDays : 0,
     overtime : 0,
-    sickPay : 0
+    sickPay : 0,
+    travelExpenses : 0
 }
 
 function calculate(){
@@ -13,7 +14,7 @@ function calculate(){
         days = 0;
     }
     var nightDays = ((payment.hourlyWage+(payment.hourlyWage*0.5))*payment.nightDays)*8;
-    var afternoonDays = ((payment.hourlyWage+(payment.hourlyWage*0.3))*payment.afternoonDays)*8;
+    var afternoonDays = ((payment.hourlyWage+(payment.hourlyWage*0.3))*payment.afternoonDays)*4;
     var overtime = (payment.hourlyWage*2)*payment.overtime;
     if(document.getElementById('sick').checked === true && payment.sickPay <=15){
         var sickPay = ((payment.hourlyWage*0.7)*payment.sickPay)*8;
@@ -22,12 +23,7 @@ function calculate(){
     }else{
         var sickPay = ((payment.hourlyWage*0.6)*payment.sickPay)*8;
     }
-    if(document.getElementById('travel-expenses').checked === true){
-        var travelExpenses = payment.days*420;
-    }else{
-        var travelExpenses = 0;
-    }
-    console.log(travelExpenses);
+    var travelExpenses = payment.travelExpenses*payment.days;
     var brutto = nightDays+afternoonDays+days+overtime+sickPay;
     var deduction = brutto *0.335;
     var netto = (brutto-deduction)+travelExpenses;
@@ -35,7 +31,7 @@ function calculate(){
 }
 
 function update(){
-    const idArray = ["hourly-wage", "days", "afternoon-days", "night-days", "overtime", "sick-pay"]
+    const idArray = ["hourly-wage", "days", "afternoon-days", "night-days", "overtime", "sick-pay", "travel-expenses"]
     let counter = 0;
 
     for(const [key, value] of Object.entries(payment)){
@@ -46,42 +42,14 @@ function update(){
         }
         counter++;
     }
-
-    //Hosszabb változat :)
-
-    /*if(isNaN(payment.hourlyWage = parseInt(document.getElementById("hourly-wage").value))){
-        payment.hourlyWage = 0;
-    }else{
-        payment.hourlyWage = parseInt(document.getElementById("hourly-wage").value);
-    }
-    if(isNaN(payment.days = parseInt(document.getElementById("days").value))){
-        payment.days = 0;
-    }else{
-        payment.days = parseInt(document.getElementById("days").value);
-    }
-    if(isNaN(parseInt(document.getElementById("afternoon-days").value))){
-        payment.afternoonDays = 0;
-    }else{
-        payment.afternoonDays = parseInt(document.getElementById("afternoon-days").value);
-    }
-    if(isNaN(payment.nightDays = parseInt(document.getElementById("night-days").value))){
-        payment.nightDays = 0;
-    }else{
-        payment.nightDays = parseInt(document.getElementById("night-days").value);
-    }
-    if(isNaN(payment.overtime = parseInt(document.getElementById("overtime").value))){
-        payment.overtime = 0;
-    }else{
-        payment.overtime = parseInt(document.getElementById("overtime").value);
-    }
-    if(isNaN(payment.sickPay = parseInt(document.getElementById("sick-pay").value))){
-        payment.sickPay = 0;
-    }else{
-        payment.sickPay = parseInt(document.getElementById("sick-pay").value);
-    }*/
 }
 
 function log(brutto){
+    if (screen.height < 1000){
+        document.getElementById('form').style.marginRight = '1rem';
+    }else if(screen.height > 1000){
+        document.getElementById('form').style.marginBottom = '1rem';
+    }
     document.getElementById("my-form").style.display = "block";
     document.getElementById("my-form").innerHTML = `
     <div class="form-group">
@@ -99,9 +67,27 @@ function log(brutto){
     
 }
 
+function deletePayment(){
+    document.getElementById("my-form").style.display = "none";
+    document.getElementById('form').style.margin = 'auto auto 1rem auto';
+    document.getElementById('sick').checked = false;
+
+    const idArray = ["hourly-wage", "days", "afternoon-days", "night-days", "overtime", "sick-pay", "travel-expenses"]
+    let counter = 0;
+
+    for(const [key, value] of Object.entries(payment)){
+        payment[`${key}`] = document.getElementById(`${idArray[counter]}`).value = "";
+        payment[`${key}`] = 0;
+        counter++;
+    }
+}
+
 document.getElementById('btn-result').addEventListener("click", function(){
-    document.getElementById('form').style.marginRight = '1rem';
     update();
-    let brutto = calculate()
+    let brutto = calculate();
     log(brutto);
-});
+})
+
+document.getElementById('btn-delete').addEventListener("click", function(){
+    deletePayment();
+})
