@@ -82,6 +82,16 @@ function deletePayment(){
     }
 }
 
+(function(){
+    document.addEventListener('keypress', function(event){
+        if (event.keyCode === 13){
+            update();
+            let brutto = calculate();
+            log(brutto);
+        }
+    });
+})();
+
 document.getElementById('btn-result').addEventListener("click", function(){
     update();
     let brutto = calculate();
