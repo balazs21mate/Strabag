@@ -14,7 +14,7 @@ function calculate(){
         days = 0;
     }
     var nightDays = ((payment.hourlyWage+(payment.hourlyWage*0.5))*payment.nightDays)*8;
-    var afternoonDays = ((payment.hourlyWage+(payment.hourlyWage*0.3))+payment.afternoonDays)*4;
+    var afternoonDays = ((payment.hourlyWage+(payment.hourlyWage*0.3))*payment.afternoonDays)*4;
     var overtime = (payment.hourlyWage*2)*payment.overtime;
     if(document.getElementById('sick').checked === true && payment.sickPay <=15){
         var sickPay = ((payment.hourlyWage*0.7)*payment.sickPay)*8;
